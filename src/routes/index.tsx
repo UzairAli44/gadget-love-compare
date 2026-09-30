@@ -99,7 +99,7 @@ function SearchBox({ mode, setMode, externalQuery, onExternalHandled }: { mode: 
       <div className="relative z-20">
         <div className={`search-shell ${focused ? "search-shell-active" : ""}`}>
           <Search className="shrink-0 text-primary" size={23} />
-          <input ref={inputRef} value={query} onChange={(event) => { setQuery(event.target.value); setActive(0); }} onFocus={() => setFocused(true)} onKeyDown={(event) => {
+          <input ref={inputRef} value={query} onChange={(event) => { setQuery(event.target.value); setActive(0); }} onFocus={() => setFocused(true)} onBlur={() => window.setTimeout(() => setFocused(false), 120)} onKeyDown={(event) => {
             if (event.key === "ArrowDown") { event.preventDefault(); setActive((value) => Math.min(value + 1, matches.length - 1)); }
             if (event.key === "ArrowUp") { event.preventDefault(); setActive((value) => Math.max(value - 1, 0)); }
             if (event.key === "Enter" && matches[active]) choose(matches[active]);
