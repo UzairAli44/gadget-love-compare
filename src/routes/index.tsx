@@ -123,8 +123,8 @@ function SearchBox({ mode, setMode, externalQuery, onExternalHandled }: { mode: 
       </div>
       <div className="mt-4 flex justify-center">
         <div className="mode-toggle" aria-label="Price region">
-          <button type="button" onClick={() => setMode("pk")} className={mode === "pk" ? "mode-active" : ""}>🇵🇰 <span>In Pakistan</span></button>
-          <button type="button" onClick={() => setMode("world")} className={mode === "world" ? "mode-active" : ""}>🌍 <span>Worldwide</span></button>
+          <button type="button" onClick={() => { setMode("pk"); setFocused(false); }} className={mode === "pk" ? "mode-active" : ""}>🇵🇰 <span>In Pakistan</span></button>
+          <button type="button" onClick={() => { setMode("world"); setFocused(false); }} className={mode === "world" ? "mode-active" : ""}>🌍 <span>Worldwide</span></button>
         </div>
       </div>
       <div className="mt-5 flex flex-wrap justify-center gap-2">
@@ -203,8 +203,8 @@ function HomePage() {
         <section id="laptops" className="page-section scroll-mt-24">
           <SectionHeading eyebrow="Explore 500+ devices" title="Browse by category" />
           <div className="grid gap-4 lg:grid-cols-2">
-            <button type="button" onClick={() => startSearch("Mobile Phones")} className="category-card group"><div><span className="category-icon"><Smartphone size={24} /></span><h3>Mobile Phones</h3><p>150+ models compared across trusted shops</p><span className="category-link">Explore phones <ArrowRight size={17} /></span></div><img src={products[1].image} alt="Modern mobile phones" loading="lazy" width={816} height={816} /></button>
-            <button type="button" onClick={() => startSearch("Laptops")} className="category-card group"><div><span className="category-icon"><Laptop size={24} /></span><h3>Laptops</h3><p>350+ laptops for work, study and gaming</p><span className="category-link">Explore laptops <ArrowRight size={17} /></span></div><img src={products[6].image} alt="Modern laptop computer" loading="lazy" width={816} height={816} /></button>
+            <button type="button" onClick={() => startSearch("Mobile Phones")} className="category-card group"><div><span className="category-icon"><Smartphone size={24} /></span><h3>Mobile Phones</h3><p>150+ models compared across trusted shops</p><span className="category-link">Explore phones <ArrowRight size={17} /></span></div><img src={products.find((item) => item.category === "phone")?.image} alt="Modern mobile phones" loading="lazy" width={816} height={816} /></button>
+            <button type="button" onClick={() => startSearch("Laptops")} className="category-card group"><div><span className="category-icon"><Laptop size={24} /></span><h3>Laptops</h3><p>350+ laptops for work, study and gaming</p><span className="category-link">Explore laptops <ArrowRight size={17} /></span></div><img src={products.find((item) => item.category === "laptop")?.image} alt="Modern laptop computer" loading="lazy" width={816} height={816} /></button>
           </div>
           <div className="mt-6 flex flex-wrap gap-2">{brands.map((brand) => <button key={brand} type="button" onClick={() => startSearch(brand)} className="brand-chip">{brand}</button>)}</div>
         </section>
