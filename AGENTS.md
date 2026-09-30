@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep all storefront demo content in `src/lib/mock-data.ts` so a future pricing API can replace one boundary.
